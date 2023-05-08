@@ -32,6 +32,7 @@ const Login = ({ isOpen, handleClose }: LoginProps) => {
     const onSubmitChange = () => {
         toggleAuth(username)
         setUsername('')
+        handleClose(false)
     }
 
     return (

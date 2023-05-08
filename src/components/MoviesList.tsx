@@ -11,7 +11,7 @@ const MoviesList = () => {
     const [movieInput, setMovieInput] = useState('')
     
     const onMovieInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        console.log(event.target.value)
+        // console.log(event.target.value)
         setMovieInput(event.target.value)
     }
     

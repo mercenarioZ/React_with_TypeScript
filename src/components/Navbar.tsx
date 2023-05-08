@@ -14,6 +14,7 @@ import { ProgressContext } from '../contexts/ProgressContext'
 import { ThemeContext } from '../contexts/ThemeContext'
 import WelcomeMessage from './WelcomeMessage'
 import Login from './Login'
+import { AuthContext } from '../contexts/AuthContext'
 
 const Navbar = () => {
     // state
@@ -31,6 +32,10 @@ const Navbar = () => {
     // Context
     const { lastTime, status } = useContext(ProgressContext)
     const { theme } = useContext(ThemeContext)
+    const {
+        authInfo: { isAuthenticated },
+        toggleAuth
+    } = useContext(AuthContext)
 
     // Event handle functions
     const onPositionChange = (event: { target: { value: string } }) => {
@@ -38,7 +43,7 @@ const Navbar = () => {
     }
 
     return (
-        <AppBar position='static' color={theme}>
+        <AppBar position='fixed' color={theme}>
             <Toolbar>
                 <Box
                     sx={{
@@ -91,10 +96,9 @@ const Navbar = () => {
                                     bgcolor: 'white',
                                     color: 'black',
                                 }}
-
-                                onClick={setLoginOpen.bind(this, true)}
+                                onClick={isAuthenticated ? toggleAuth.bind(this, '') : setLoginOpen.bind(this, true)}
                             >
-                                Login
+                                {isAuthenticated ? 'Logout' : 'Login'}
                             </Button>
                         </Box>
                     </Box>
