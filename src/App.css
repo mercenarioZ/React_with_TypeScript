@@ -1,0 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.MuiInputBase-root {
+  border: 0;
+}
+
+.MuiSelect-icon {
+  color: white !important;
+}
